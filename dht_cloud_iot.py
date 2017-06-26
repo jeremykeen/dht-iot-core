@@ -202,8 +202,8 @@ def main():
         dt = datetime.datetime.utcnow()
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
         temperature = temperature * 9 / 5.0 + 32
-        payload = '{0}/{1}-temp-{2:0.1f}*-hum-{3:0.1f}%'.format(
-                args.registry_id, args.device_id, temperature, humidity)
+        payload = '{0},{1},{2:0.1f},{3:0.1f}'.format(
+                dt, args.device_id, temperature, humidity)
         print(
                 'Publishing message {}/{}: \'{}\''.format(
                         i, args.num_messages, payload))
